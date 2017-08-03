@@ -14,18 +14,13 @@ export default {
 </script>
 
 <style>
-html {
-  height: 100%;
-}
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
 }
 .app-wrapper {
-  margin-top: 50px;
+  padding-top: 40px;
 }
 .form-control {
   margin-top: 10px;
