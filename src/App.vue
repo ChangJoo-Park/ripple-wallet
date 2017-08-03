@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <mt-header fixed title="Ripple Wallet"></mt-header>
+    <div class="app-wrapper">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -12,12 +14,20 @@ export default {
 </script>
 
 <style>
+html, body {
+  height: 100%;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+}
+.app-wrapper {
+  margin-top: 50px;
+}
+.form-control {
+  margin-top: 10px;
 }
 </style>
