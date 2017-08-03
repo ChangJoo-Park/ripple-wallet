@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style>
-html, body {
+html {
   height: 100%;
 }
 
