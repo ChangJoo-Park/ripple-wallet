@@ -1,4 +1,7 @@
 # ripple-wallet
+🚧
+
+![ripple-wallet](http://i.imgur.com/XyVAzi5.gif)
 
 > A Vue.js project
 
