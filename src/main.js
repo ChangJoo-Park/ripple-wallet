@@ -10,6 +10,12 @@ Vue.use(Mint)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+Vue.directive('focus', {
+  inserted: function (el) {
+    el.focus()
+  }
+})
+
 new Vue({
   el: '#app',
   router,
