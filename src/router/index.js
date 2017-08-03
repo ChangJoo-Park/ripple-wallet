@@ -9,6 +9,11 @@ export default new Router({
       path: '/',
       name: 'no-wallet-page',
       component: require('@/components/pages/NoWallet')
+    },
+    {
+      path: '/main',
+      name: 'wallet-page',
+      component: require('@/components/pages/Wallet')
     }
   ]
 })
