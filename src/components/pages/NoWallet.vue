@@ -1,39 +1,67 @@
 <template>
   <div id="main-page">
     <!-- Form -->
-    <form @submit.prevent="handleSubmit" v-if="currentOption !== null">
-      <div v-if="currentOption === 'create'">
-        <mt-field @focus label="Crypto Key" placeholder="Input Salt" v-model="filed"></mt-field>
+
+      <div class="upper-wrapper" v-if="currentOption === null">
+        <transition
+          name="logo-classes-transition"
+          enter-active-class="animated tada"
+          enter-leave-class="animated bounceOutRight"
+          mode="out-in"
+          appear
+        >
+          <h1 class="logo">&#128179;</h1>
+        </transition>
       </div>
-      <div v-if="currentOption === 'get'">
-        <mt-field @focus label="Wallet" placeholder="Input Wallet Id" v-model="filed"></mt-field>
-      </div>
-    </form>
+      <form class="upper-wrapper" @submit.prevent="handleSubmit" v-else>
+        <transition
+          name="form-classes-transition"
+          enter-active-class="animated fadeIn"
+          appear
+        >
+          <div v-if="currentOption === 'create'">
+            <mt-field @focus label="Crypto Key" placeholder="Input Salt" v-model="filed"></mt-field>
+          </div>
+          <div v-if="currentOption === 'get'">
+            <mt-field @focus label="Wallet" placeholder="Input Wallet Id" v-model="filed"></mt-field>
+          </div>
+        </transition>
+      </form>
+
     <!-- Actions -->
     <div class="">
       <!-- Select Actions -->
-      <div class="" v-if="currentOption === null">
-        <div class="form-control">
-          <mt-button type="default" size="large" @click="currentOption = 'create'">
-            Create Wallet
-          </mt-button>
+      <transition
+        name="form-classes-transition"
+        enter-active-class="animated fadeIn"
+        appear
+      >
+        <div class="" v-if="currentOption === null">
+          <div class="form-control">
+            <mt-button type="default" size="large" @click="currentOption = 'create'">
+              Create Wallet
+            </mt-button>
+          </div>
+          <div class="form-control">
+            <mt-button type="primary" size="large" @click="currentOption = 'get'">
+              Get the Wallet
+            </mt-button>
+          </div>
         </div>
-        <div class="form-control">
-          <mt-button type="primary" size="large" @click="currentOption = 'get'">
-            Get the Wallet
-          </mt-button>
+        <!-- Form Actions -->
+        <div v-else>
+          <div class="form-control">
+            <mt-button type="primary" size="large" @click.prevent="handleSubmit">
+              Confirm
+            </mt-button>
+          </div>
+          <div class="form-control">
+            <mt-button type="danger" size="large" @click="currentOption = null">
+              Cancel
+            </mt-button>
+          </div>
         </div>
-      </div>
-      <!-- Form Actions -->
-      <div class="form-control" v-else>
-        <mt-button type="primary" size="large" @click.prevent="handleSubmit">
-          Confirm
-        </mt-button>
-        <br>
-        <mt-button type="danger" size="large" @click="currentOption = null">
-          Cancel
-        </mt-button>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -77,5 +105,16 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.upper-wrapper {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-size: 5rem;
 }
 </style>
