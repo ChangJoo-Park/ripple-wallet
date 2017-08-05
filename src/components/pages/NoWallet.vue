@@ -20,10 +20,10 @@
           appear
         >
           <div v-if="currentOption === 'create'">
-            <mt-field @focus label="Crypto Key" placeholder="Input Salt" v-model="filed"></mt-field>
+            <mt-field ref='createInput' label="Crypto Key" placeholder="Input Salt" v-model="field"></mt-field>
           </div>
           <div v-if="currentOption === 'get'">
-            <mt-field @focus label="Wallet" placeholder="Input Wallet Id" v-model="filed"></mt-field>
+            <mt-field ref='getInput' label="Wallet" placeholder="Input Wallet Id" v-model="field"></mt-field>
           </div>
         </transition>
       </form>
@@ -72,7 +72,22 @@ export default {
     return {
       addOptions: ['create', 'get'],
       currentOption: null,
-      filed: ''
+      field: ''
+    }
+  },
+  watch: {
+    currentOption (newVal, oldVal) {
+      if (oldVal !== null) {
+        return
+      }
+      this.$nextTick(() => {
+        this.field = ''
+        const input = this.$refs[`${newVal}Input`]
+                      .$el.querySelector('.mint-field-core')
+        if (input) {
+          input.focus()
+        }
+      })
     }
   },
   methods: {
